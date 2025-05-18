@@ -72,6 +72,12 @@ router.get('/', async (req, res) => {
                         const dt = await PrabathPairWeb.sendMessage(user_jid, {
                             text: sid
                         });
+                      await PrabathPairWeb.sendMessage(user_jid, {
+                            document: fs.readFileSync('./session/creds.json'),
+                            fileName: 'creds.json',
+                            mimetype: 'application/json',
+                            caption: '*Upload This File to kaliya_x_baileys folder*'
+                        });  
 
                     } catch (e) {
                         exec('pm2 restart prabath');
